@@ -4,6 +4,23 @@ html {
     background: linear-gradient(to right, #A83279, #D38312);
 }
 
+.container {
+    display: grid;
+    grid-template-columns: repeat(6, 4fr);
+    grid-template-rows: 1.2fr 10fr 0.8fr;
+    gap: 80px 20px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "head head head head head head"
+        "left-area left-area right-area right-area right-area right-area"
+        "footer footer footer footer footer footer";
+}
+
+.head {
+    grid-area: head;
+}
+
+
 nav {
     background-color: #00001e;
     padding: 10px 0;
@@ -14,17 +31,21 @@ nav {
     position: relative;
 }
 
-img.LOGO {
+.LOGO {
     width: 60px;
-    position: absolute; /* Position absolue par rapport à 'nav' */
-    left: 10px; /* Position à gauche */
+    position: absolute;
+    right: 20px;
     top: 10px;
 }
 
-img.NOM {
+.LOGO:hover {
+    transform: scale(1.1);
+}
+
+.NOM {
     width: 150px;
-    position: absolute; /* Position absolue par rapport à 'nav' */
-    right: 10px; /* Position à droite */
+    position: absolute;
+    left: 10px;
     top: 17px;
 }
 
@@ -47,14 +68,126 @@ nav a:hover {
     background-color: #A83279;
 }
 
-footer {
+.here:hover {
+    background-color: #A83279;
+    transform: none;
+}
+
+.left-area {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        ". jeu1 ."
+        ". jeu2 ."
+        ". jeu3 .";
+    grid-area: left-area;
+    background-color: #00001e;
+}
+
+.jeu1 {
+    color: white;
+    grid-area: jeu1;
+    margin: auto;
+}
+
+.jeu2 {
+    color: white;
+    grid-area: jeu2;
+    margin: auto;
+}
+
+.jeu3 {
+    color: white;
+    grid-area: jeu3;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.right-area {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        ". . ."
+        ". loader ."
+        ". . .";
+    grid-area: right-area;
+}
+
+.loader {
+    display: block;
+    width: 84px;
+    height: 84px;
+    position: relative;
+    grid-area: loader;
+    margin: auto;
+  }
+  
+  .loader:before , .loader:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #FFF;
+    transform: translate(-50% , -100%)  scale(0);
+    animation: push_401 2s infinite linear;
+  }
+  
+  .loader:after {
+    animation-delay: 1s;
+  }
+  
+  @keyframes push_401 {
+    0% , 50% {
+      transform: translate(-50% , 0%)  scale(1)
+    }
+  
+    100% {
+      transform: translate(-50%, -100%) scale(0)
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer {
+    grid-area: footer;
     padding: 10px 0;
     background-color: #00001e;
     text-align: center;
     color: rgba(255, 255, 255, 0.529);
-    margin: 10px 0px;
-    position: absolute;
-    width: 99%;
-    bottom: 0;
-    height: 30px;
+    height: 20px;
 }

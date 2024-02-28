@@ -4,6 +4,23 @@ html {
     background: linear-gradient(to right, #A83279, #D38312);
 }
 
+.container {
+    display: grid;
+    grid-template-columns: repeat(6, 4fr);
+    grid-template-rows: 1.2fr 10fr 0.8fr;
+    gap: 80px 20px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "head head head head head head"
+        "left-area left-area right-area right-area right-area right-area"
+        "footer footer footer footer footer footer";
+}
+
+.head {
+    grid-area: head;
+}
+
+
 nav {
     background-color: #00001e;
     padding: 10px 0;
@@ -14,17 +31,21 @@ nav {
     position: relative;
 }
 
-img.LOGO {
+.LOGO {
     width: 60px;
-    position: absolute; /* Position absolue par rapport à 'nav' */
-    left: 10px; /* Position à gauche */
+    position: absolute;
+    right: 20px;
     top: 10px;
 }
 
-img.NOM {
+.LOGO:hover {
+    transform: scale(1.1);
+}
+
+.NOM {
     width: 150px;
-    position: absolute; /* Position absolue par rapport à 'nav' */
-    right: 10px; /* Position à droite */
+    position: absolute;
+    left: 10px;
     top: 17px;
 }
 
@@ -47,14 +68,238 @@ nav a:hover {
     background-color: #A83279;
 }
 
-footer {
+.here:hover {
+    background-color: #A83279;
+    transform: none;
+}
+
+.group {
+    display: flex;
+    line-height: 28px;
+    align-items: center;
+    position: absolute;
+    right: 100px;
+    top: 20px;
+    max-width: 190px;
+  }
+  
+  .input {
+    width: 100%;
+    height: 40px;
+    line-height: 28px;
+    padding: 0 1rem;
+    padding-left: 2.5rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: #e0e0e0;
+    color: #00001e;
+    transition: 0.3s ease;
+  }
+  
+  .input::placeholder {
+    color: #9e9ea7;
+  }
+  
+  .input:focus,
+  input:hover {
+    outline: none;
+    border-color: rgba(234, 226, 183, 0.4);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgb(234 226 183 / 10%);
+  }
+  
+  .icon {
+    position: absolute;
+    left: 1rem;
+    fill: #9e9ea7;
+    width: 1rem;
+    height: 1rem;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.left-area {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        ". . ."
+        ". JEU ."
+        ". . .";
+    grid-area: left-area;
+    background-color: #00001e;
+}
+
+.radio-input-wrapper {
+    grid-area: JEU;
+    margin: auto;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    border-radius: 100px;
+    padding: 14px 16px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: .3s;
+  }
+  
+  .label:hover,
+  .label:focus-within,
+  .label:active {
+    background: hsla(0, 0%, 80%, .14);
+  }
+  
+  .radio-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    z-index: -1;
+  }
+  
+  .radio-design {
+    width: 22px;
+    height: 22px;
+    border-radius: 100px;
+    background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(225, 97%, 62%));
+    position: relative;
+  }
+  
+  .radio-design::before {
+    content: '';
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    background: hsl(0, 0%, 90%);
+    transform: scale(1.1);
+    transition: .3s;
+  }
+  
+  .radio-input:checked+.radio-design::before {
+    transform: scale(0);
+  }
+  
+  .label-text {
+    color: hsl(0, 0%, 60%);
+    margin-left: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 900;
+    transition: .3s;
+  }
+  
+  .radio-input:checked~.label-text {
+    color: hsl(0, 0%, 40%);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.right-area {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        ". . ."
+        ". loader ."
+        ". . .";
+    grid-area: right-area;
+}
+
+.loader {
+    display: block;
+    width: 84px;
+    height: 84px;
+    position: relative;
+    grid-area: loader;
+    margin: auto;
+  }
+  
+  .loader:before , .loader:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #00001e;
+    transform: translate(-50% , -100%)  scale(0);
+    animation: push_401 2s infinite linear;
+  }
+  
+  .loader:after {
+    animation-delay: 1s;
+  }
+  
+  @keyframes push_401 {
+    0% , 50% {
+      transform: translate(-50% , 0%)  scale(1)
+    }
+  
+    100% {
+      transform: translate(-50%, -100%) scale(0)
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer {
+    grid-area: footer;
     padding: 10px 0;
     background-color: #00001e;
     text-align: center;
     color: rgba(255, 255, 255, 0.529);
-    margin: 10px 0px;
-    position: absolute;
-    width: 99%;
-    bottom: 0;
-    height: 30px;
+    height: 20px;
 }
